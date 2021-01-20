@@ -5,11 +5,22 @@ import TodayIcon from '@material-ui/icons/Today';
 import NoteIcon from '@material-ui/icons/Note';
 import HelpIcon from '@material-ui/icons/Help';
 import SettingsIcon from '@material-ui/icons/Settings';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './EmailList.css'
 import EmailRow from './EmailRow';
+import {db} from '../firebase'
 
 function EmailList() {
+
+    const [emails, setEmails] = useState([]);
+
+    useEffect(() => {
+        db.collection("email").orderBy("timestamp" , 'desc').onSnapshot(snapshot => setEmails(snapshot.docs.map(doc => ({
+            id: doc.id,
+            data: doc.data()
+        }))))
+    }, []);
+
     return (
         <div className="emailList">
             <div className="emailList__settings">
@@ -53,12 +64,21 @@ function EmailList() {
                 </div>
             </div>    
             <div className="emailList__list">
+            
                 <div className="emailBody">
                     <div className="emailList__options__head">
                         <p>Today</p>
                     </div>
-                    <EmailRow title="Faraz Akhtar" subject="Happy New Year" description="This is test " time="12:09 P.M"/>
-                    <EmailRow title="Faraz Akhtar" subject="Happy New Year" description="This is test" time="12:09 P.M"/>
+                    {emails.map( ({id,data}) => (    
+                      <EmailRow 
+                      id={id} 
+                      key={id} 
+                      title={data.to} 
+                      subject={data.subject} 
+                      description={data.message} 
+                      time={new Date(data.timstamp?.seconds * 1000).toUTCString()}
+                      />
+                    ))}
                 </div>
                 <div className="emailSidebar">
                     
