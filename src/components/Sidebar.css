@@ -1,0 +1,56 @@
+.sidebar {
+  top: 80px;
+  position: -webkit-sticky;
+  position: sticky;
+  flex: 0.15 1;
+  border-radius: 10px;
+  text-align: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-right: 15px;
+}
+
+.sidebar__top > button {
+  background-color: #b08ae4;
+  color: white;
+  border: none;
+  height: 50px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar__middle {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.sidebarBottom__feature {
+  display: flex;
+  align-items: center;
+  color: gray;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sidebarBottom__feature:hover {
+  background-color: #efefef;
+  color: black;
+}
+
+.sidebarBottom__feature > p {
+  margin-left: 5px;
+}
+
+.sidebar__bottom > h4 {
+  margin-bottom: 5px;
+  text-align: left;
+}
