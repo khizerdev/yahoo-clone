@@ -14,11 +14,13 @@ function EmailList() {
 
     const [emails, setEmails] = useState([]);
 
+
     useEffect(() => {
-        db.collection("email").orderBy("timestamp" , 'desc').onSnapshot(snapshot => setEmails(snapshot.docs.map(doc => ({
+        db.collection("emails").orderBy("timestamp" , 'desc').onSnapshot(snapshot => setEmails(snapshot.docs.map(doc => ({
             id: doc.id,
             data: doc.data()
         }))))
+        console.log(emails)
     }, []);
 
     return (
@@ -69,16 +71,22 @@ function EmailList() {
                     <div className="emailList__options__head">
                         <p>Today</p>
                     </div>
-                    {emails.map( ({id,data}) => (    
+                    {emails.map( ({id,data :{to,subject,message,timestamp}}) => (    
                       <EmailRow 
                       id={id} 
                       key={id} 
-                      title={data.to} 
-                      subject={data.subject} 
-                      description={data.message} 
-                      time={new Date(data.timstamp?.seconds * 1000).toUTCString()}
+                      title={to} 
+                      subject={subject} 
+                      description={message} 
+                      time={new Date(timestamp?.seconds * 1000).toUTCString()}
                       />
                     ))}
+                    {/* <EmailRow 
+                      title="Title" 
+                      subject="Subject" 
+                      description="Description" 
+                      time="12/07/2020"
+                      /> */}
                 </div>
                 <div className="emailSidebar">
                     

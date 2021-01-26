@@ -29,8 +29,12 @@
 
 .emailRow__title {
   font-size: 13px;
+  width: 97px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .emailRow__time {
-  font-size: 13spx;
+  font-size: 13px;
 }

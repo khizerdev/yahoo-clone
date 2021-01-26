@@ -1,5 +1,6 @@
 .sidebar {
-  top: 80px;
+  /* top: 80px; */
+  top: 10px;
   position: -webkit-sticky;
   position: sticky;
   flex: 0.15 1;

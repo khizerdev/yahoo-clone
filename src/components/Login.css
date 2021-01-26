@@ -1,0 +1,59 @@
+.login__header > img {
+  width: 100px;
+}
+
+.login__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.login__body {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 100px;
+}
+
+.loginBox__Right > img {
+  width: 100px;
+  padding: 20px 0;
+}
+
+.loginBox__Right h6 {
+  font-weight: 700;
+}
+
+.loginBox__Right p {
+  font-size: 13px;
+}
+
+.loginBox__left {
+  flex: 0.65;
+  padding: 50px;
+}
+
+.loginBox__Right {
+  flex: 0.35;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.loginBox__Right > button {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 30px;
+  outline: none;
+  width: 200px;
+  margin: 15px auto;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button > img {
+  margin-right: 10px;
+}

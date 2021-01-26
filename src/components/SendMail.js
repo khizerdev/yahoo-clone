@@ -1,16 +1,18 @@
 import { Button } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { closeSendMessage } from '../features/mailSlice'
 import './SendMail.css'
 import {db} from '../firebase'
 import firebase from 'firebase'
+import CustomizedSnackbar from '../Snackbar';
 
 function SendMail() {
     const {register,handleSubmit,watch,errors} = useForm()
     const dispatch = useDispatch()
+    const [open,setOpen] = useState(false)
 
     const onSubmit = (formData) => {
         db.collection("emails").add({
@@ -19,12 +21,13 @@ function SendMail() {
             message: formData.message,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
-
-        dispatch(closeSendMessage())
+        setOpen(true)
+        // dispatch(closeSendMessage())
     }
 
     return (
         <div className="sendMail">
+          <CustomizedSnackbar open={open} setOpen={setOpen}/>
             <div className="sendMail__header">
                 <h3>New Message</h3>
                 <Close className="sendMail__close" onClick={() => dispatch(closeSendMessage())}/>

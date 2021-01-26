@@ -5,9 +5,20 @@ import HomeIcon from '@material-ui/icons/Home'
 import HeaderOption from './HeaderOption';
 import { Avatar } from '@material-ui/core'
 import AppsIcon from '@material-ui/icons/Apps';
+import { logout, selectUser } from '../features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth } from '../firebase';
 
 function Header() {
 
+    const user = useSelector(selectUser)
+    const dispatch = useDispatch()
+
+    const signOut = () => {
+        auth.signOut().then(() => {
+            dispatch(logout())
+        })
+    }
 
     return (
         <div className="header">
@@ -23,7 +34,10 @@ function Header() {
 
             <div className="header__right">
                 <div className="avatar_frame">
-                    <Avatar src="https://odindesignthemes.com/vikinger-theme/wp-content/uploads/avatars/1/5f6d2c93a53d1-bpfull.jpg" className="headerOption__icon"/>
+                    <Avatar 
+                    src={user.photoURL} className="headerOption__icon"
+                        onClick={signOut}
+                    />
                     <p>Ashley</p>
                 </div>
                 <HeaderOption Icon={AppsIcon}/>

@@ -8,8 +8,13 @@ import { IconButton } from '@material-ui/core';
 import {useHistory} from 'react-router-dom'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import StarIcon from '@material-ui/icons/Star';
+import { useSelector } from 'react-redux';
+import { selectOpenMail } from '../features/mailSlice';
+
 
 function Mail() {
+
+    const selectedMail = useSelector(selectOpenMail)
 
     const history = useHistory()
     return (
@@ -38,14 +43,14 @@ function Mail() {
                     <div className="mail__bodyHeader"> 
                     <div className="headerLeft">
                         <FiberManualRecordIcon/>
-                            <h2>Happy New Year</h2>
+                            <h2>{selectedMail?.subject}</h2> &nbsp;(<h2>{selectedMail?.title}</h2>&nbsp; )
                         </div>
                     <div className="headerRight">
                     <StarIcon/>
                     </div>
                     </div>
                     <div className="mail__message">
-                            This is test
+                            {selectedMail?.description}
                     </div>
                 </div>
         </div>
