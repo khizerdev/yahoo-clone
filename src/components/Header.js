@@ -38,7 +38,7 @@ function Header() {
                     src={user.photoURL} className="headerOption__icon"
                         onClick={signOut}
                     />
-                    <p>Ashley</p>
+                    <p>{user.displayName}</p>
                 </div>
                 <HeaderOption Icon={AppsIcon}/>
                 <HeaderOption Icon={HomeIcon} title="Home"/>
